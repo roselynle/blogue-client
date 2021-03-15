@@ -10,13 +10,20 @@
     <body>
         <h1>BLOGUE</h1>
         <h6>A Community of Overthinkers</h6>
+        <div class="button">
+                <button class="button" onClick="document.getElementById('post').scrollIntoView();">Make a Post</button> 
+                <button class="button" onClick="document.getElementById('entries').scrollIntoView();">See All Posts</button>
+        </div>
         <div id="post">
             <h2>WHAT'S ON YOUR MIND?</h2>
-            <form action="" method=""> 
+            <!-- entries should be sent to entries.html, this can be changed later -->
+            <form action="entries.html" method="POST"> 
                 <label for="journalInput"> Your Entry</label><br><br>
-                <textarea id="journalInput" name="Your Entry" rows="15" cols="80" placeholder="Fill in your thoughts...">
-               
-                </textarea>
+                <textarea id="journalInput" name="Your Entry" rows="15" cols="80">
+                
+                </textarea><br>
+                <button class="submit" type="submit">SUBMIT</button>
+            
 
             </form>
             
