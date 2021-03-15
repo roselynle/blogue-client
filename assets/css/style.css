@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 body {
-    background: url(assets/images/background.jpg);
+    background: url("../images/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 @font-face {
     font-family: "vogue";
-    src: url("vogue.ttf") format("truetype");
+    src: url("assets/css/vogue.ttf") format("truetype");
 }
 
 h1 {
@@ -47,3 +47,4 @@ h6 {
     font-weight: 700;
     height: 600px;
 }
+
