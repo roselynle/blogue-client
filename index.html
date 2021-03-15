@@ -4,14 +4,29 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <title>Blogue</title>
     </head>
     <body>
         <h1>BLOGUE</h1>
-        <h6>a community of overthinkers</h6>
+        <h6>A Community of Overthinkers</h6>
+        <div class="button">
+                <button class="button" onClick="document.getElementById('post').scrollIntoView();">Make a Post</button> 
+                <button class="button" onClick="document.getElementById('entries').scrollIntoView();">See All Posts</button>
+        </div>
         <div id="post">
             <h2>WHAT'S ON YOUR MIND?</h2>
+            <!-- entries should be sent to entries.html, this can be changed later -->
+            <form action="entries.html" method="POST"> 
+                <label for="journalInput"> Your Entry</label><br><br>
+                <textarea id="journalInput" name="Your Entry" rows="15" cols="80">
+                
+                </textarea><br>
+                <button class="submit" type="submit">SUBMIT</button>
+            
+
+            </form>
+            
         </div>
         <div id="entries">
             <h2>WHAT'S EVERYONE ELSE THINKING?</h2>
