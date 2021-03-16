@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script defer src="bundle.js"></script>
+        <script defer src="assets/js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <title>Blogue</title>
+    </head>
+    <body>
+        <h1>BLOGUE</h1>
+        <h6>A Community of Overthinkers</h6>
+        <div class="button">
+            <button
+                class="navigate"
+                onClick="document.getElementById('post').scrollIntoView();"
+            >
+                Make a Post
+            </button>
+            <button
+                class="navigate"
+                onClick="document.getElementById('entries').scrollIntoView();"
+            >
+                See All Posts
+            </button>
+        </div>
+        <div id="post">
+            <h2>WHAT'S ON YOUR MIND?</h2>
+            <!-- entries should be sent to entries.html, this can be changed later -->
+            <!-- <form action="entries.html" id="form" method="POST"> -->
+            <form id="new-post-form">
+                <label for="subject"> Your Entry</label><br /><br />
+                Subject:
+                <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    maxlength="100"
+                    required
+                />
+                <div id="subjectCount">0/100</div>
+                <br />
+                <textarea
+                    form="form"
+                    placeholder="What's on your mind?..."
+                    id="journalInput"
+                    name="journalInput"
+                    rows="15"
+                    cols="80"
+                    maxlength="2000"
+                    required
+                ></textarea
+                ><br />
+                <div id="inputCount">0/2000</div>
+                <label for="giphy">Gif URL</label>
+                <input id="giphy" name="giphy" type="search" />
+                <div id="gifContainer"></div>
+                <button onclick="sendApiRequest()" class="gif-button">
+                    <!-- check if putting a function on onclick works? -->
+                    Add GIF
+                </button>
+                <button class="submit" type="submit">SUBMIT</button>
+            </form>
+        </div>
+        <div id="entries">
+            <h2>WHAT'S EVERYONE ELSE THINKING?</h2>
+            <section id="postsContainer"></section>
+        </div>
+    </body>
+</html>
