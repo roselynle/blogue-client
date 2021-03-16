@@ -28,11 +28,16 @@ form.addEventListener("submit", submitPost);
 
 function submitPost(e) {
     e.preventDefault();
+    const currentDate = new Date();
+    const dateTimeStamp = `${currentDate.getDate()}/${
+        currentDate.getMonth() + 1 // because january starts at 0
+    }/${currentDate.getFullYear()}, ${currentDate.getHours()}:${currentDate.getMinutes()}`;
 
     const postData = {
         subject: e.target.subject.value,
         journalInput: e.target.journalInput.value,
         gif: e.target.giphy.value,
+        date: dateTimeStamp,
     };
 
     const options = {
