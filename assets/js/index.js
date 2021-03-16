@@ -72,6 +72,10 @@ function appendPost(data) {
     const contents = document.createElement("p");
     contents.textContent = data.journalInput;
 
+    // paragraphs for the date
+    const date = document.createElement("p");
+    date.textContent = data.date;
+
     // imgs for the gif
     const newImg = document.createElement("img");
     newImg.src = postData.gif;
@@ -89,6 +93,37 @@ function appendPost(data) {
     postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
     parent.append(postsDiv);
+}
+
+// Add a GIF
+const gifButton = document.getElementById("gif-button");
+gifButton.addEventListener("click", sendApiRequest);
+
+function sendApiRequest(e) {
+    e.preventDefault();
+    let apikey = "DV4iN2mItn9xsI2WSKzWWKpTaNpw9H9n";
+    let url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=3&q=`;
+    let str = document.getElementById("giphy").value.trim(); // giphy is the id for the searchbox
+    url = url.concat(str);
+    console.log(url);
+
+    fetch(url)
+        .then((r) => r.json())
+        .then((content) => {
+            let gifimg = document.createElement("img");
+            gifimg.src =
+                content.data[
+                    Math.floor(content.data.length * Math.random())
+                ].images.downsized.url; // choose a random gif from data array, if this doesn't work use the first one content.data[0].images.downsized.url
+            gifimg.classList.add("imgFormat");
+            let gifContainer = document.getElementById("gifContainer");
+            gifContainer.append(gifimg);
+            gifContainer.insertAdjacentElement("afterbegin", gifimg); // gif image will show up in teh make a post section
+        })
+        .then(appendPost) // check if correct - essentially we need to append this gif to a new post
+        .catch((err) => {
+            console.log(err);
+        });
 }
 
 module.exports = {
