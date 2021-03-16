@@ -4,6 +4,7 @@
     font-family: "vogue";
     src: url("assets/css/vogue.ttf") format("truetype");
 }
+
 body {
     background: linear-gradient(
       rgba(255, 254, 253, 0.6),
@@ -12,6 +13,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
   }
+
 h1 {
     font-family: "vogue";
     font-size: 15rem;
@@ -22,20 +24,21 @@ h1 {
     color: rgb(71, 53, 53);
     opacity: 0.85;
 }
-h6 {
+h2 {
     font-family: "Satisfy", cursive;
     text-align: center;
     font-size: 2.5rem;
     height: 0px;
     font-weight: lighter;
+    margin-bottom: 6rem;
 }
-h2 {
+h3 {
     font-family: "Satisfy", cursive;
     text-align: center;
     font-size: 2.5rem;
     font-weight: bolder;
-    margin-top: 0%;
 }
+
 .button {
     display: flex;
     justify-content: center;
@@ -56,10 +59,12 @@ h2 {
     background-color: silver;
     transition-duration: 0.4s;
 }
+
 .navigate:hover {
     background-color: black;
     color: white;
 }
+
 #post {
     font-family: "vogue";
     letter-spacing: 0.1em;
@@ -75,15 +80,18 @@ h2 {
 form{
     font-size: 30px;
 }
+
 #journalInput {
     background-color: rgb(238, 213, 190);
     box-shadow: tan;
 }
+
 #subject {
     background-color: rgb(238, 213, 190);
     width: 400px;
     height:20px;
 }
+
 .submit{
     border: none;
     cursor: pointer;
@@ -98,6 +106,7 @@ form{
     border-radius: 8px;
     transition-duration: 0.4s;
 }
+
 .submit:hover {
     background-color: black;
     color: white;
