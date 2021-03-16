@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script defer src="bundle.js"></script>
+        <script defer src="assets/js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
         <title>Blogue</title>
     </head>
@@ -12,24 +13,48 @@
         <h1>BLOGUE</h1>
         <h6>A Community of Overthinkers</h6>
         <div class="button">
-                <button class="navigate" onClick="document.getElementById('post').scrollIntoView();">Make a Post</button> 
-                <button class="navigate" onClick="document.getElementById('entries').scrollIntoView();">See All Posts</button>
+            <button
+                class="navigate"
+                onClick="document.getElementById('post').scrollIntoView();"
+            >
+                Make a Post
+            </button>
+            <button
+                class="navigate"
+                onClick="document.getElementById('entries').scrollIntoView();"
+            >
+                See All Posts
+            </button>
         </div>
         <div id="post">
             <h2>WHAT'S ON YOUR MIND?</h2>
             <!-- entries should be sent to entries.html, this can be changed later -->
-            <form action="entries.html" id="form" method="POST"> 
-                <label for="journalInput"> Your Entry</label><br><br>
-                Subject: <input type="text" name="subject" id="subject"> <br><br>
-                <textarea form="form" placeholder="What's on your mind?..." id="journalInput" name="Your Entry" rows="15" cols="80" maxlength="5000" autofocus></textarea><br>
-                <div id="word-count">
-                    <span id="current">0</span>
-                    <span id="maximum">/5000</span>
-                </div>
+            <form action="entries.html" id="form" method="POST">
+                <label for="subject"> Your Entry</label><br /><br />
+                Subject:
+                <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    maxlength="100"
+                />
+                <div id="subjectCount">0/100</div>
+                <br />
+                <textarea
+                    form="form"
+                    placeholder="What's on your mind?..."
+                    id="journalInput"
+                    name="journalInput"
+                    rows="15"
+                    cols="80"
+                    maxlength="2000"
+                    autofocus
+                ></textarea
+                ><br />
+                <div id="inputCount">0/2000</div>
                 <button class="submit" type="submit">SUBMIT</button>
-                <button class="gif" >Add GIF</button>
+                <button class="gif">Add GIF</button>
             </form>
-            
         </div>
         <div id="entries">
             <h2>WHAT'S EVERYONE ELSE THINKING?</h2>
