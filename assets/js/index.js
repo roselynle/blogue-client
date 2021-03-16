@@ -49,7 +49,7 @@ function submitPost(e) {
         },
     };
 
-    fetch("http://localhost:3000/posts", options) //check url?? also do we need to put this in a function to export?
+    fetch("https://bloguefp.herokuapp.com/", options) //check url?? also do we need to put this in a function to export?
         .then((r) => r.json())
         .then(appendPost)
         .catch(console.warn);
@@ -79,14 +79,23 @@ function appendPost(data) {
     // imgs for the gif
     const newImg = document.createElement("img");
     newImg.src = postData.gif;
+    newImg.style.display = "block";
+    newImg.style.margin = "0 auto";
+    newImg.alt = "";
 
-    // div for emoji icons (from font awesome perhaps? like, dislike and laugh reaction)
+    // div for emoji icons
     const reactionDiv = document.createElement("div");
+    const commentIcon = `<i class="fas fa-comment fa-3x"></i>`;
+    const likeIcon = `<i class="fas fa-thumbs up fa-3x"></i>`;
+    const dislikeIcon = `<i class="fas fa-thumbs down fa-3x"></i>`;
+    const laughIcon = `<i class="far fa-laugh-squint fa-3x"></i>`;
+    reactionDiv.className = `icons`;
+    reactionDiv.innerHTML = commentIcon + likeIcon + dislikeIcon + laughIcon;
 
     // div for comments
     const commentDiv = document.createElement("div");
 
-    // Appending each element to the new postsDiv, and then append this new div to existing postsContainer
+    // appending each element to the new postsDiv, and then append this new div to existing postsContainer
     postsDiv.appendChild(header);
     postsDiv.appendChild(contents);
     postsDiv.appendChild(newImg);
