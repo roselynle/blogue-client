@@ -69,7 +69,9 @@ h2 {
     height: 700px;
     margin-top: 200px;
     margin-bottom: 100px;
+    padding-top:30px;
 }
+
 form{
     font-size: 30px;
 }
@@ -127,4 +129,18 @@ form{
     color: rgb(71, 53, 53);
     font-weight: 700;
     height: 800px;
+    padding-top: 30px;
+}
+
+#subjectCount {
+    font-size: 1rem;
+}
+
+#inputCount {
+    padding-bottom: 30px;
+    font-size: 1rem;
+}
+
+#gifContainer {
+    height: 30px;
 }

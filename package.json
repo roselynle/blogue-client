@@ -2,11 +2,11 @@
   "name": "blogue-client",
   "version": "1.0.0",
   "description": "",
-  "main": "/js/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",
-    "dev": "concurrently \"watchify ./static/js/index.js -o bundle.js\" \"python -m http.server\""
+    "dev": "concurrently \"watchify ./assets/js/index.js -o bundle.js\" \"python -m http.server\""
   },
   "repository": {
     "type": "git",
