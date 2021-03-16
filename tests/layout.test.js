@@ -18,5 +18,10 @@ describe("index.html", () => {
         test("there is a header", () => {
             expect(document.querySelector("header")).toBeTruthy();
         });
+
+        test("subject has max character length of 100", () => {
+            let form = document.querySelector("#new-post-form");
+            expect(form.innerHTML).toContain("100");
+        });
     });
 });
