@@ -49,7 +49,7 @@ function submitPost(e) {
         },
     };
 
-    fetch("http://localhost:3000/posts", options) //check url??
+    fetch("http://localhost:3000/posts", options) //check url?? also do we need to put this in a function to export?
         .then((r) => r.json())
         .then(appendPost)
         .catch(console.warn);
@@ -88,5 +88,11 @@ function appendPost(data) {
     postsDiv.appendChild(newImg);
     postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
-    postsContainer.append(postsDiv);
+    parent.append(postsDiv);
 }
+
+module.exports = {
+    submitPost,
+    appendPost,
+    appendPosts,
+};
