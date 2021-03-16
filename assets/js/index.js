@@ -39,6 +39,8 @@ function submitPost(e) {
         date: dateTimeStamp,
     };
 
+    console.log(postData);
+
     const options = {
         method: "POST",
         body: JSON.stringify(postData),
@@ -51,4 +53,40 @@ function submitPost(e) {
         .then((r) => r.json())
         .then(appendPost)
         .catch(console.warn);
+}
+
+// Append new post to the page
+function appendPosts(posts) {
+    posts.forEach((post) => appendPost(post));
+}
+
+let parent = document.getElementById("postsContainer");
+function appendPost(data) {
+    const postsDiv = document.createElement("div");
+
+    // headers for the subject names
+    const header = document.createElement("h3");
+    header.textContent = data.subject;
+
+    // paragraphs for the journal content
+    const contents = document.createElement("p");
+    contents.textContent = data.journalInput;
+
+    // imgs for the gif
+    const newImg = document.createElement("img");
+    newImg.src = postData.gif;
+
+    // div for emoji icons (from font awesome perhaps? like, dislike and laugh reaction)
+    const reactionDiv = document.createElement("div");
+
+    // div for comments
+    const commentDiv = document.createElement("div");
+
+    // Appending each element to the new postsDiv, and then append this new div to existing postsContainer
+    postsDiv.appendChild(header);
+    postsDiv.appendChild(contents);
+    postsDiv.appendChild(newImg);
+    postsDiv.appendChild(reactionDiv);
+    postsDiv.appendChild(commentDiv);
+    postsContainer.append(postsDiv);
 }
