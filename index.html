@@ -29,7 +29,8 @@
         <div id="post">
             <h2>WHAT'S ON YOUR MIND?</h2>
             <!-- entries should be sent to entries.html, this can be changed later -->
-            <form action="entries.html" id="form" method="POST">
+            <!-- <form action="entries.html" id="form" method="POST"> -->
+            <form id="new-post-form">
                 <label for="subject"> Your Entry</label><br /><br />
                 Subject:
                 <input
@@ -37,6 +38,7 @@
                     name="subject"
                     id="subject"
                     maxlength="100"
+                    required
                 />
                 <div id="subjectCount">0/100</div>
                 <br />
@@ -48,16 +50,21 @@
                     rows="15"
                     cols="80"
                     maxlength="2000"
-                    autofocus
+                    required
                 ></textarea
                 ><br />
                 <div id="inputCount">0/2000</div>
+                <label for="giphy">Gif URL</label>
+                <input id="searchBox" type="search" />
+                <button onclick="sendApiRequest()" class="gif-button">
+                    Add GIF
+                </button>
                 <button class="submit" type="submit">SUBMIT</button>
-                <button class="gif">Add GIF</button>
             </form>
         </div>
         <div id="entries">
             <h2>WHAT'S EVERYONE ELSE THINKING?</h2>
+            <section id="postsContainer"></section>
         </div>
     </body>
 </html>
