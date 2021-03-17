@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script defer src="bundle.js"></script>
         <script defer src="assets/js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <script src="https://kit.fontawesome.com/2021b518c4.js" crossorigin="anonymous"></script>
         <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -76,7 +76,7 @@
                 <label for="giphy">Gif URL</label>
                 <input id="giphy" name="giphy" type="search" />
                 <div id="gifContainer"></div>
-                <button onclick="sendApiRequest()" class="gif-button">
+                <button onclick="sendApiRequest()" id="gif-button">
                     <!-- check if putting a function on onclick works? -->
                     Add GIF
                 </button>
