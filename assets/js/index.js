@@ -39,8 +39,6 @@ function submitPost(e) {
         date: dateTimeStamp,
     };
 
-    console.log(postData);
-
     const options = {
         method: "POST",
         body: JSON.stringify(postData),
@@ -49,8 +47,8 @@ function submitPost(e) {
         },
     };
 
-    fetch("https://bloguefp.herokuapp.com/", options) //check url?? also do we need to put this in a function to export?
-        .then((r) => r.json())
+    fetch("http://localhost:3000/", options) //check url?? also do we need to put this in a function to export?
+        .then(resp => resp.json())
         .then(appendPost)
         .catch(console.warn);
 }
@@ -85,12 +83,12 @@ function appendPost(data) {
     // newImg.style.margin = "0 auto";
 
     // // div for emoji icons
-    // const reactionDiv = document.createElement("div");
-    // const commentIcon = `<i class="fas fa-comment fa-3x"></i>`;
-    // const loveIcon = `<i class="fas fa-heart fa-3x"></i>`;
-    // const cryIcon = `<i class="fas fa-sad-tear fa-3x"></i>`;
-    // const laughIcon = `<i class="far fa-laugh-squint fa-3x"></i>`;
-    // reactionDiv.innerHTML = commentIcon + loveIcon + cryIcon + laughIcon;
+    const reactionDiv = document.createElement("div");
+    const commentIcon = `<i class="fas fa-comment fa-3x"></i>`;
+    const loveIcon = `<i class="fas fa-heart fa-3x"></i>`;
+    const cryIcon = `<i class="fas fa-sad-tear fa-3x"></i>`;
+    const laughIcon = `<i class="far fa-laugh-squint fa-3x"></i>`;
+    reactionDiv.innerHTML = commentIcon + loveIcon + cryIcon + laughIcon;
 
     // create form for comments
     const commentDiv = document.createElement("div");
@@ -99,7 +97,7 @@ function appendPost(data) {
     const formCommentInput = document.createElement("input");
     formCommentInput.setAttribute("type", "text");
     formCommentInput.setAttribute("name", "comments");
-    formCommentInput.setAttribute("value", "comments");
+    formCommentInput.setAttribute("palceholder", "comments");
     formCommentInput.setAttribute("class", "formCommentInput");
     //set id to the post to use later
     formComment.setAttribute("id", data.id);
@@ -112,11 +110,12 @@ function appendPost(data) {
     formComment.append(formCommentSubmitButton);
     // add event listener to comment submit button
     formComment.addEventListener("submit", submitComment); // function below
+    commentDiv.appendChild(formComment);
 
     // appending each element to the new postsDiv, and then append this new div to existing postsContainer
     postsDiv.appendChild(header);
     postsDiv.appendChild(contents);
-    postsDiv.appendChild(newImg);
+    //postsDiv.appendChild(newImg);
     postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
     parent.append(postsDiv);
@@ -219,7 +218,7 @@ function sendApiRequest(e) {
 
 // ******************** Get all posts as soon as app is loaded ********************
 function getAllPosts() {
-    fetch("https://bloguefp.herokuapp.com/")
+    fetch("http://localhost:3000/")
         .then((r) => r.json())
         .then(appendPosts)
         .catch(console.warn);
