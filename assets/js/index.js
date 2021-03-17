@@ -39,8 +39,6 @@ function submitPost(e) {
         date: dateTimeStamp,
     };
 
-    console.log(postData);
-
     const options = {
         method: "POST",
         body: JSON.stringify(postData),
@@ -50,7 +48,7 @@ function submitPost(e) {
     };
 
     fetch("https://bloguefp.herokuapp.com/", options) //check url?? also do we need to put this in a function to export?
-        .then((r) => r.json())
+        .then(resp => resp.json())
         .then(appendPost)
         .catch(console.warn);
 }
@@ -85,12 +83,14 @@ function appendPost(data) {
     // newImg.style.margin = "0 auto";
 
     // // div for emoji icons
-    // const reactionDiv = document.createElement("div");
-    // const commentIcon = `<i class="fas fa-comment fa-3x"></i>`;
-    // const loveIcon = `<i class="fas fa-heart fa-3x"></i>`;
-    // const cryIcon = `<i class="fas fa-sad-tear fa-3x"></i>`;
-    // const laughIcon = `<i class="far fa-laugh-squint fa-3x"></i>`;
-    // reactionDiv.innerHTML = commentIcon + loveIcon + cryIcon + laughIcon;
+    const reactionDiv = document.createElement("div");
+    const commentIcon = `<i class="fas fa-comment fa-3x"></i>`;
+    const loveIcon = `<i class="fas fa-heart fa-3x emoji"></i>`;
+    const cryIcon = `<i class="fas fa-sad-tear fa-3x emoji"></i>`;
+    const laughIcon = `<i class="far fa-laugh-squint fa-3x emoji"></i>`;
+    reactionDiv.setAttribute("class", `${data.id}`);
+    
+    reactionDiv.innerHTML = commentIcon + loveIcon + cryIcon + laughIcon;
 
     // create form for comments
     const commentDiv = document.createElement("div");
@@ -99,7 +99,7 @@ function appendPost(data) {
     const formCommentInput = document.createElement("input");
     formCommentInput.setAttribute("type", "text");
     formCommentInput.setAttribute("name", "comments");
-    formCommentInput.setAttribute("value", "comments");
+    formCommentInput.setAttribute("palceholder", "comments");
     formCommentInput.setAttribute("class", "formCommentInput");
     //set id to the post to use later
     formComment.setAttribute("id", data.id);
@@ -112,21 +112,26 @@ function appendPost(data) {
     formComment.append(formCommentSubmitButton);
     // add event listener to comment submit button
     formComment.addEventListener("submit", submitComment); // function below
+    commentDiv.appendChild(formComment);
 
     // appending each element to the new postsDiv, and then append this new div to existing postsContainer
     postsDiv.appendChild(header);
     postsDiv.appendChild(contents);
-    // postsDiv.appendChild(newImg);
-    // postsDiv.appendChild(reactionDiv);
+    //postsDiv.appendChild(newImg);
+    postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
     parent.append(postsDiv);
+    const emojis = reactionDiv.getElementsByClassName('emoji');
+    for (let emoji of emojis) {
+        emoji.addEventListener("click", emojiReact);
+    }
 }
 
 // ******************** Function for users to submit comments to posts ********************
 function submitComment(e) {
     e.preventDefault();
+    const postId = parseInt(e.target.getAttribute("id"));
     const commentData = {
-        id: e.target.getAttribute("id"),
         comment: e.target.comments.value, // this is comming from above line 102
     };
 
@@ -138,8 +143,8 @@ function submitComment(e) {
         },
     };
 
-    fetch("https://bloguefp.herokuapp.com/", options)
-        .then((r) => r.json())
+    fetch(`https://bloguefp.herokuapp.com/${postId}`, options)
+        .then((r) => r.json()).then(console.log)
         .catch(console.warn);
 
     commentsFunction(commentData, e.target);
@@ -158,6 +163,35 @@ function commentsFunction(commentData, formComment) {
 
 // ******************** Function to handle emoji ********************
 // do i need a function for each seperate emoji?
+
+function emojiReact(e) {
+    console.log(e)
+
+    let emoji = e.path[0].classList;
+    console.log(emoji)
+    if (emoji[1] === "fa-heart") {
+        emoji = "heart";
+    } else if (emoji[1] === "fa-sad-tear") {
+        emoji = "cry";
+    }
+    else {
+        emoji = "laugh";
+    }
+
+    const postId = e.path[1].className;
+
+    const options = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+
+    fetch(`https://bloguefp.herokuapp.com/${postId}/${emoji}`, options)
+        .then(console.log)
+        .then(emojiCounter)
+        .catch(console.warn);
+}
 // const emoji = document.querySelector(""); // to add event listener on emoji? use a tag instead of i tag to make it a link?
 // emoji.addEventListener("click", emojiReact);
 
@@ -228,6 +262,7 @@ function getAllPosts() {
 getAllPosts();
 
 // ********************  Function exporting for testing ********************
+
 module.exports = {
     submitPost,
     appendPost,
