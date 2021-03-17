@@ -6,7 +6,7 @@ let postInput = document.getElementById("journalInput");
 
 function countCharacters() {
     let subjectMaxLength = 100;
-    let inputMaxLength = 500;
+    let inputMaxLength = 1000;
     let subjectLength = postSubject.value.length;
     let inputLength = postInput.value.length;
 
@@ -47,8 +47,8 @@ function submitPost(e) {
         },
     };
 
-    fetch("https://bloguefp.herokuapp.com/", options) //check url?? also do we need to put this in a function to export?
-        .then(resp => resp.json())
+    fetch("https://bloguefp.herokuapp.com/", options) // also do we need to put this in a function to export?
+        .then((resp) => resp.json())
         .then(appendPost)
         .catch(console.warn);
 }
@@ -66,10 +66,12 @@ function appendPost(data) {
 
     // headers for the subject names
     const header = document.createElement("h4");
-    header.textContent = data.subject;
+    header.setAttribute("id", "commentHeading");
+    header.textContent = `Post ${data.id}: ` + data.subject;
 
     // paragraphs for the journal content
     const contents = document.createElement("p");
+    contents.setAttribute("id", "commentContents");
     contents.textContent = data.journalInput;
 
     // small text for the date
@@ -82,32 +84,32 @@ function appendPost(data) {
     // newImg.style.display = "block";
     // newImg.style.margin = "0 auto";
 
-    // // div for emoji icons
+    // div for emoji icons and assigning icons a class of emoji
     const reactionDiv = document.createElement("div");
-    const commentIcon = `<i class="fas fa-comment fa-3x"></i>`;
-    const loveIcon = `<i class="fas fa-heart fa-3x emoji"></i>`;
-    const cryIcon = `<i class="fas fa-sad-tear fa-3x emoji"></i>`;
-    const laughIcon = `<i class="far fa-laugh-squint fa-3x emoji"></i>`;
+    const commentIcon = `<i class="fas fa-comment fa-2x comment"></i>`;
+    const loveIcon = `<i class="fas fa-heart fa-2x emoji"></i>`;
+    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"></i>`;
+    const laughIcon = `<i class="far fa-laugh-squint fa-2x emoji"></i>`;
     reactionDiv.setAttribute("class", `${data.id}`);
-    
+
     reactionDiv.innerHTML = commentIcon + loveIcon + cryIcon + laughIcon;
 
     // create form for comments
     const commentDiv = document.createElement("div");
     const formComment = document.createElement("form");
-    //create text input to type comment
+    // create text input to type comment
     const formCommentInput = document.createElement("input");
     formCommentInput.setAttribute("type", "text");
     formCommentInput.setAttribute("name", "comments");
-    formCommentInput.setAttribute("palceholder", "comments");
+    formCommentInput.setAttribute("placeholder", "Add a comment");
     formCommentInput.setAttribute("class", "formCommentInput");
-    //set id to the post to use later
+    // set id to the post to use later
     formComment.setAttribute("id", data.id);
-    //create submit button
+    // create submit button
     const formCommentSubmitButton = document.createElement("input");
     formCommentSubmitButton.setAttribute("type", "submit");
     formCommentSubmitButton.setAttribute("class", "formCommentSubmitButton");
-    //append form together
+    // append form together
     formComment.append(formCommentInput);
     formComment.append(formCommentSubmitButton);
     // add event listener to comment submit button
@@ -121,7 +123,7 @@ function appendPost(data) {
     postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
     parent.append(postsDiv);
-    const emojis = reactionDiv.getElementsByClassName('emoji');
+    const emojis = reactionDiv.getElementsByClassName("emoji");
     for (let emoji of emojis) {
         emoji.addEventListener("click", emojiReact);
     }
@@ -144,7 +146,8 @@ function submitComment(e) {
     };
 
     fetch(`https://bloguefp.herokuapp.com/${postId}`, options)
-        .then((r) => r.json()).then(console.log)
+        .then((r) => r.json())
+        .then(console.log)
         .catch(console.warn);
 
     commentsFunction(commentData, e.target);
@@ -156,25 +159,23 @@ function submitComment(e) {
 function commentsFunction(commentData, formComment) {
     const newCommentContainer = document.createElement("div");
     const newCommentMessage = document.createElement("p");
+    newCommentMessage.setAttribute("class", "newCommentMessage");
     newCommentMessage.textContent = `${commentData.comment}`;
     newCommentContainer.append(newCommentMessage);
     formComment.append(newCommentContainer);
 }
 
 // ******************** Function to handle emoji ********************
-// do i need a function for each seperate emoji?
-
 function emojiReact(e) {
-    console.log(e)
+    console.log(e);
 
     let emoji = e.path[0].classList;
-    console.log(emoji)
+    console.log(emoji);
     if (emoji[1] === "fa-heart") {
         emoji = "heart";
     } else if (emoji[1] === "fa-sad-tear") {
         emoji = "cry";
-    }
-    else {
+    } else {
         emoji = "laugh";
     }
 
@@ -218,7 +219,7 @@ function emojiReact(e) {
 //         .catch(console.warn);
 // }
 
-function emojiCounter(data) {} // this function is not finished
+// function emojiCounter(data) {} // this function is not finished
 
 // ******************** Add a GIF ********************
 const gifButton = document.getElementById("gif-button");
@@ -228,7 +229,7 @@ function sendApiRequest(e) {
     e.preventDefault();
     let apikey = "DV4iN2mItn9xsI2WSKzWWKpTaNpw9H9n";
     let url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=3&q=`;
-    let str = document.getElementById("giphy").value.trim(); // giphy is the id for the searchbox
+    let str = document.getElementById("giphy").value.trim();
     url = url.concat(str);
     console.log(url);
 

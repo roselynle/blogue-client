@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Redressed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Satisfy&display=swap");
 @font-face {
     font-family: "vogue";
     src: url("vogue.ttf") format("truetype");
@@ -7,8 +6,8 @@
 
 body {
     background: linear-gradient(
-            rgba(255, 254, 253, 0.75),
-            rgba(255, 254, 253, 0.75)
+            rgba(255, 254, 253, 0.85),
+            rgba(255, 254, 253, 0.85)
         ),
         url("../images/background.jpg");
     background-size: cover;
@@ -36,7 +35,7 @@ h2 {
     padding-bottom: 3rem;
 }
 h3 {
-    font-family: "Satisfy", cursive;
+    font-family: "Montserrat", sans-serif;
     text-align: center;
     font-size: 2rem;
     font-weight: bolder;
@@ -53,7 +52,8 @@ h3 {
     padding: 15px 28px;
     text-align: center;
     font-size: 28px;
-    font-family: "Redressed", cursive;
+    /* font-family: "Redressed", cursive; */
+    font-family: "Montserrat", sans-serif;
     height: 60px;
     position: relative;
     margin: 20px;
@@ -101,7 +101,8 @@ form {
     padding: 10px 20px;
     text-align: center;
     font-size: 20px;
-    font-family: "Redressed", cursive;
+    /* font-family: "Redressed", cursive; */
+    font-family: "Montserrat", sans-serif;
     height: 50px;
     position: relative;
     margin-bottom: 30%;
@@ -121,7 +122,8 @@ form {
     padding: 10px 20px;
     text-align: center;
     font-size: 20px;
-    font-family: "Redressed", cursive;
+    /* font-family: "Redressed", cursive; */
+    font-family: "Montserrat", sans-serif;
     height: 50px;
     position: relative;
     margin-bottom: 30%;
@@ -154,6 +156,7 @@ form {
 
 #gifContainer {
     height: 30px;
+    display: inline-block;
 }
 
 #postsContainer {
@@ -165,9 +168,10 @@ form {
 }
 
 #giphy {
-    width: 300px;
-    height: 25px;
+    width: 400px;
+    height: 27px;
     margin: 0 auto;
+    background-color: rgb(238, 213, 190);
 }
 
 @media (max-width: 1024px) {
@@ -258,4 +262,32 @@ form {
     #postsContainer {
         width: 275px;
     }
+}
+
+#commentHeading {
+    font-size: 30px;
+    margin-top: 40px;
+}
+#commentContents,
+.newCommentMessage {
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    padding-bottom: 30px;
+}
+
+.formCommentInput {
+    background-color: rgb(238, 213, 190);
+    width: 300px;
+    margin: 20px 10px 20px 0px;
+    height: 20px;
+}
+
+.emoji,
+.comment {
+    padding: 15px 12px;
+}
+
+.imgFormat {
+    max-block-size: 10rem;
+    margin: 12px auto;
 }
