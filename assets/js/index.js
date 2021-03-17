@@ -136,7 +136,7 @@ function submitComment(e) {
     };
 
     const options = {
-        method: "PATCH",
+        method: "PATCH", //patch not post
         body: JSON.stringify(commentData),
         headers: {
             "Content-Type": "application/json",
@@ -192,6 +192,31 @@ function emojiReact(e) {
         .then(emojiCounter)
         .catch(console.warn);
 }
+// const emoji = document.querySelector(""); // to add event listener on emoji? use a tag instead of i tag to make it a link?
+// emoji.addEventListener("click", emojiReact);
+
+// function emojiReact(id, reaction) {
+//     e.preventDefault();
+
+//     const emojiData = {
+//         // need id of the post and what emoji was clicked on?
+//         id: id,
+//         emoji: emoji,
+//     };
+
+//     const options = {
+//         method: "POST",
+//         body: JSON.stringify(emojiData),
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//     };
+
+//     fetch("https://bloguefp.herokuapp.com/", options)
+//         .then((r) => r.json())
+//         .then(emojiCounter)
+//         .catch(console.warn);
+// }
 
 function emojiCounter(data) {} // this function is not finished
 
@@ -237,9 +262,9 @@ function getAllPosts() {
 getAllPosts();
 
 // ********************  Function exporting for testing ********************
-/*
+
 module.exports = {
     submitPost,
     appendPost,
     appendPosts,
-};*/
+};
