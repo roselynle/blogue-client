@@ -32,10 +32,11 @@ function submitPost(e) {
         currentDate.getMonth() + 1 // because january starts at 0
     }/${currentDate.getFullYear()}, ${currentDate.getHours()}:${currentDate.getMinutes()}`;
 
+    console.log(document.getElementById("gifPreview").getAttribute('src'))
     const postData = {
         subject: e.target.subject.value,
         journalInput: e.target.journalInput.value,
-        gif: document.getElementById("gifPreview").src,
+        gif: document.getElementById("gifPreview").getAttribute('src'),
         date: dateTimeStamp,
     };
 
@@ -73,10 +74,11 @@ function appendPost(data) {
     contents.textContent = data.journalInput;
 
     // small text for the date
-    const date = document.createElement("small");
+    const date = document.createElement("p");
     date.textContent = data.date;
 
     // // imgs for the gif
+    console.log(data.gif)
     const newImg = document.createElement("img");
     newImg.src = data.gif;
     newImg.style.display = "block";
@@ -236,10 +238,7 @@ function sendApiRequest(e) {
         .then((r) => r.json())
         .then((content) => {
             let gifimg = document.getElementById("gifPreview")
-            gifimg.src =
-                content.data[
-                    Math.floor(content.data.length * Math.random())
-                ].images.downsized.url; // choose a random gif, if this doesn't work use the first one e.g. content.data[0].images.downsized.url
+            gifimg.setAttribute('src', content.data[Math.floor(content.data.length * Math.random())].images.downsized.url); // choose a random gif, if this doesn't work use the first one e.g. content.data[0].images.downsized.url
             gifimg.classList.add("imgFormat");
             //let gifContainer = document.getElementById("gifContainer");
             //gifContainer.append(gifimg);
