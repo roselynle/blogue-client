@@ -85,9 +85,11 @@ function appendPost(data) {
     // // div for emoji icons
     const reactionDiv = document.createElement("div");
     const commentIcon = `<i class="fas fa-comment fa-3x"></i>`;
-    const loveIcon = `<i class="fas fa-heart fa-3x"></i>`;
-    const cryIcon = `<i class="fas fa-sad-tear fa-3x"></i>`;
-    const laughIcon = `<i class="far fa-laugh-squint fa-3x"></i>`;
+    const loveIcon = `<i class="fas fa-heart fa-3x emoji"></i>`;
+    const cryIcon = `<i class="fas fa-sad-tear fa-3x emoji"></i>`;
+    const laughIcon = `<i class="far fa-laugh-squint fa-3x emoji"></i>`;
+    reactionDiv.setAttribute("class", `${data.id}`);
+    
     reactionDiv.innerHTML = commentIcon + loveIcon + cryIcon + laughIcon;
 
     // create form for comments
@@ -119,26 +121,30 @@ function appendPost(data) {
     postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
     parent.append(postsDiv);
+    const emojis = reactionDiv.getElementsByClassName('emoji');
+    for (let emoji of emojis) {
+        emoji.addEventListener("click", emojiReact);
+    }
 }
 
 // ******************** Function for users to submit comments to posts ********************
 function submitComment(e) {
     e.preventDefault();
+    const postId = parseInt(e.target.getAttribute("id"));
     const commentData = {
-        id: e.target.getAttribute("id"),
         comment: e.target.comments.value, // this is comming from above line 102
     };
 
     const options = {
-        method: "POST",
+        method: "PATCH",
         body: JSON.stringify(commentData),
         headers: {
             "Content-Type": "application/json",
         },
     };
 
-    fetch("https://bloguefp.herokuapp.com/", options)
-        .then((r) => r.json())
+    fetch(`http://localhost:3000/${postId}`, options)
+        .then((r) => r.json()).then(console.log)
         .catch(console.warn);
 
     commentsFunction(commentData, e.target);
@@ -157,28 +163,32 @@ function commentsFunction(commentData, formComment) {
 
 // ******************** Function to handle emoji ********************
 // do i need a function for each seperate emoji?
-const emoji = document.querySelector(""); // to add event listener on emoji? use a tag instead of i tag to make it a link?
-emoji.addEventListener("click", emojiReact);
 
-function emojiReact(id, reaction) {
-    e.preventDefault();
+function emojiReact(e) {
+    console.log(e)
 
-    const emojiData = {
-        // need id of the post and what emoji was clicked on?
-        id: id,
-        emoji: emoji,
-    };
+    let emoji = e.path[0].classList;
+    console.log(emoji)
+    if (emoji[1] === "fa-heart") {
+        emoji = "heart";
+    } else if (emoji[1] === "fa-sad-tear") {
+        emoji = "cry";
+    }
+    else {
+        emoji = "laugh";
+    }
+
+    const postId = e.path[1].className;
 
     const options = {
-        method: "POST",
-        body: JSON.stringify(emojiData),
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
         },
     };
 
-    fetch("https://bloguefp.herokuapp.com/", options)
-        .then((r) => r.json())
+    fetch(`http://localhost:3000/${postId}/${emoji}`, options)
+        .then(console.log)
         .then(emojiCounter)
         .catch(console.warn);
 }
@@ -227,8 +237,9 @@ function getAllPosts() {
 getAllPosts();
 
 // ********************  Function exporting for testing ********************
+/*
 module.exports = {
     submitPost,
     appendPost,
     appendPosts,
-};
+};*/
