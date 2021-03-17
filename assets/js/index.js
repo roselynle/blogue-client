@@ -86,13 +86,13 @@ function appendPost(data) {
 
     // div for emoji icons and assigning icons a class of emoji
     const reactionDiv = document.createElement("div");
-    const commentIcon = `<i class="fas fa-comment fa-2x comment"></i>`;
-    const loveIcon = `<i class="fas fa-heart fa-2x emoji"></i>`;
-    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"></i>`;
-    const laughIcon = `<i class="far fa-laugh-squint fa-2x emoji"></i>`;
+    // const commentIcon = `<i class="fas fa-comment fa-2x comment"></i>`;
+    const loveIcon = `<i class="fas fa-heart fa-2x emoji"><small id="loveCounter">0</small></i>`;
+    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"><small id="cryCounter">0</small></i>`;
+    const laughIcon = `<i class="fas fa-laugh-squint fa-2x emoji"><small id="laughCounter">0</small></i>`;
     reactionDiv.setAttribute("class", `${data.id}`);
 
-    reactionDiv.innerHTML = commentIcon + loveIcon + cryIcon + laughIcon;
+    reactionDiv.innerHTML = loveIcon + cryIcon + laughIcon; //commentIcon +
 
     // create form for comments
     const commentDiv = document.createElement("div");
