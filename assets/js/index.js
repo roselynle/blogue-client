@@ -119,6 +119,7 @@ function appendPost(data) {
     // appending each element to the new postsDiv, and then append this new div to existing postsContainer
     postsDiv.appendChild(header);
     postsDiv.appendChild(contents);
+    postsDiv.appendChild(date);
     //postsDiv.appendChild(newImg);
     postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
