@@ -47,7 +47,7 @@ function submitPost(e) {
         },
     };
 
-    fetch("http://localhost:3000/", options) //check url?? also do we need to put this in a function to export?
+    fetch("https://bloguefp.herokuapp.com/", options) //check url?? also do we need to put this in a function to export?
         .then(resp => resp.json())
         .then(appendPost)
         .catch(console.warn);
@@ -143,7 +143,7 @@ function submitComment(e) {
         },
     };
 
-    fetch(`http://localhost:3000/${postId}`, options)
+    fetch(`https://bloguefp.herokuapp.com/${postId}`, options)
         .then((r) => r.json()).then(console.log)
         .catch(console.warn);
 
@@ -187,7 +187,7 @@ function emojiReact(e) {
         },
     };
 
-    fetch(`http://localhost:3000/${postId}/${emoji}`, options)
+    fetch(`https://bloguefp.herokuapp.com/${postId}/${emoji}`, options)
         .then(console.log)
         .then(emojiCounter)
         .catch(console.warn);
@@ -228,7 +228,7 @@ function sendApiRequest(e) {
 
 // ******************** Get all posts as soon as app is loaded ********************
 function getAllPosts() {
-    fetch("http://localhost:3000/")
+    fetch("https://bloguefp.herokuapp.com/")
         .then((r) => r.json())
         .then(appendPosts)
         .catch(console.warn);
