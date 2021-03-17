@@ -116,8 +116,8 @@ function appendPost(data) {
     // appending each element to the new postsDiv, and then append this new div to existing postsContainer
     postsDiv.appendChild(header);
     postsDiv.appendChild(contents);
-    postsDiv.appendChild(newImg);
-    postsDiv.appendChild(reactionDiv);
+    // postsDiv.appendChild(newImg);
+    // postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
     parent.append(postsDiv);
 }
@@ -131,7 +131,7 @@ function submitComment(e) {
     };
 
     const options = {
-        method: "POST",
+        method: "PATCH", //patch not post
         body: JSON.stringify(commentData),
         headers: {
             "Content-Type": "application/json",
@@ -158,31 +158,31 @@ function commentsFunction(commentData, formComment) {
 
 // ******************** Function to handle emoji ********************
 // do i need a function for each seperate emoji?
-const emoji = document.querySelector(""); // to add event listener on emoji? use a tag instead of i tag to make it a link?
-emoji.addEventListener("click", emojiReact);
+// const emoji = document.querySelector(""); // to add event listener on emoji? use a tag instead of i tag to make it a link?
+// emoji.addEventListener("click", emojiReact);
 
-function emojiReact(id, reaction) {
-    e.preventDefault();
+// function emojiReact(id, reaction) {
+//     e.preventDefault();
 
-    const emojiData = {
-        // need id of the post and what emoji was clicked on?
-        id: id,
-        emoji: emoji,
-    };
+//     const emojiData = {
+//         // need id of the post and what emoji was clicked on?
+//         id: id,
+//         emoji: emoji,
+//     };
 
-    const options = {
-        method: "POST",
-        body: JSON.stringify(emojiData),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    };
+//     const options = {
+//         method: "POST",
+//         body: JSON.stringify(emojiData),
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//     };
 
-    fetch("https://bloguefp.herokuapp.com/", options)
-        .then((r) => r.json())
-        .then(emojiCounter)
-        .catch(console.warn);
-}
+//     fetch("https://bloguefp.herokuapp.com/", options)
+//         .then((r) => r.json())
+//         .then(emojiCounter)
+//         .catch(console.warn);
+// }
 
 function emojiCounter(data) {} // this function is not finished
 
