@@ -35,7 +35,7 @@ function submitPost(e) {
     const postData = {
         subject: e.target.subject.value,
         journalInput: e.target.journalInput.value,
-        gif: e.target.giphy.value,
+        gif: document.getElementById("gifPreview").src,
         date: dateTimeStamp,
     };
 
@@ -77,10 +77,10 @@ function appendPost(data) {
     date.textContent = data.date;
 
     // // imgs for the gif
-    // const newImg = document.createElement("img");
-    // newImg.src = data.gif;
-    // newImg.style.display = "block";
-    // newImg.style.margin = "0 auto";
+    const newImg = document.createElement("img");
+    newImg.src = data.gif;
+    newImg.style.display = "block";
+    newImg.style.margin = "0 auto";
 
     // // div for emoji icons
     const reactionDiv = document.createElement("div");
@@ -117,7 +117,7 @@ function appendPost(data) {
     // appending each element to the new postsDiv, and then append this new div to existing postsContainer
     postsDiv.appendChild(header);
     postsDiv.appendChild(contents);
-    //postsDiv.appendChild(newImg);
+    postsDiv.appendChild(newImg);
     postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
     parent.append(postsDiv);
@@ -144,7 +144,7 @@ function submitComment(e) {
     };
 
     fetch(`https://bloguefp.herokuapp.com/${postId}`, options)
-        .then((r) => r.json()).then(console.log)
+        .then((r) => r.json())
         .catch(console.warn);
 
     commentsFunction(commentData, e.target);
@@ -200,7 +200,7 @@ const gifButton = document.getElementById("gif-button");
 gifButton.addEventListener("click", sendApiRequest);
 
 function sendApiRequest(e) {
-    e.preventDefault();
+    // e.preventDefault(); Button has no default behaviour
     let apikey = "DV4iN2mItn9xsI2WSKzWWKpTaNpw9H9n";
     let url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=3&q=`;
     let str = document.getElementById("giphy").value.trim(); // giphy is the id for the searchbox
@@ -210,17 +210,17 @@ function sendApiRequest(e) {
     fetch(url)
         .then((r) => r.json())
         .then((content) => {
-            let gifimg = document.createElement("img");
+            let gifimg = document.getElementById("gifPreview")
             gifimg.src =
                 content.data[
                     Math.floor(content.data.length * Math.random())
                 ].images.downsized.url; // choose a random gif, if this doesn't work use the first one e.g. content.data[0].images.downsized.url
             gifimg.classList.add("imgFormat");
-            let gifContainer = document.getElementById("gifContainer");
-            gifContainer.append(gifimg);
-            gifContainer.insertAdjacentElement("afterbegin", gifimg); // gif image will show up as a preview in the make a post section
+            //let gifContainer = document.getElementById("gifContainer");
+            //gifContainer.append(gifimg);
+            //gifContainer.insertAdjacentElement("afterbegin", gifimg); // gif image will show up as a preview in the make a post section
         })
-        .then(appendEntry)
+        //.then(appendEntry)
         .catch((err) => {
             console.log(err);
         });
@@ -237,9 +237,9 @@ function getAllPosts() {
 getAllPosts();
 
 // ********************  Function exporting for testing ********************
-/*
+
 module.exports = {
     submitPost,
     appendPost,
     appendPosts,
-};*/
+};
