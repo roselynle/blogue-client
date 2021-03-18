@@ -32,11 +32,11 @@ function submitPost(e) {
         currentDate.getMonth() + 1 // because january starts at 0
     }/${currentDate.getFullYear()}, ${currentDate.getHours()}:${currentDate.getMinutes()}`;
 
-    console.log(document.getElementById("gifPreview").getAttribute('src'))
+    console.log(document.getElementById("gifPreview").getAttribute("src"));
     const postData = {
         subject: e.target.subject.value,
         journalInput: e.target.journalInput.value,
-        gif: document.getElementById("gifPreview").getAttribute('src'),
+        gif: document.getElementById("gifPreview").getAttribute("src"),
         date: dateTimeStamp,
     };
 
@@ -75,12 +75,12 @@ function appendPost(data) {
     contents.setAttribute("id", "commentContents");
     contents.textContent = data.journalInput;
 
-    // small text for the date
+    // paragraphs for the date
     const date = document.createElement("p");
     date.textContent = data.date;
 
-    // // imgs for the gif
-    console.log(data.gif)
+    // imgs for the gif
+    console.log(data.gif);
     const newImg = document.createElement("img");
     newImg.src = data.gif;
     newImg.style.display = "block";
@@ -88,13 +88,11 @@ function appendPost(data) {
 
     // div for emoji icons and assigning icons a class of emoji
     const reactionDiv = document.createElement("div");
-    // const commentIcon = `<i class="fas fa-comment fa-2x comment"></i>`;
-    const loveIcon = `<i class="fas fa-heart fa-2x emoji"><small id="loveCounter">0</small></i>`;
-    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"><small id="cryCounter">0</small></i>`;
-    const laughIcon = `<i class="fas fa-laugh-squint fa-2x emoji"><small id="laughCounter">0</small></i>`;
+    const loveIcon = `<i class="fas fa-heart fa-2x emoji"><small id="heartCounter${data.id}">${data.reactions.heart}</small></i>`;
+    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"><small id="cryCounter${data.id}">${data.reactions.cry}</small></i>`;
+    const laughIcon = `<i class="fas fa-laugh-squint fa-2x emoji"><small id="laughCounter${data.id}">${data.reactions.laugh}</small></i>`;
     reactionDiv.setAttribute("class", `${data.id}`);
-
-    reactionDiv.innerHTML = loveIcon + cryIcon + laughIcon; //commentIcon +
+    reactionDiv.innerHTML = loveIcon + cryIcon + laughIcon;
 
     // create form for comments
     const commentDiv = document.createElement("div");
@@ -137,11 +135,11 @@ function submitComment(e) {
     e.preventDefault();
     const postId = parseInt(e.target.getAttribute("id"));
     const commentData = {
-        comment: e.target.comments.value, // this is comming from above line 102
+        comment: e.target.comments.value,
     };
 
     const options = {
-        method: "PATCH", //patch not post
+        method: "PATCH",
         body: JSON.stringify(commentData),
         headers: {
             "Content-Type": "application/json",
@@ -170,9 +168,7 @@ function commentsFunction(commentData, formComment) {
 // ******************** Function to handle emoji ********************
 function emojiReact(e) {
     console.log(e);
-
     let emoji = e.path[0].classList;
-    console.log(emoji);
     if (emoji[1] === "fa-heart") {
         emoji = "heart";
     } else if (emoji[1] === "fa-sad-tear") {
@@ -180,48 +176,23 @@ function emojiReact(e) {
     } else {
         emoji = "laugh";
     }
-
     const postId = e.path[1].className;
-
     const options = {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
         },
     };
-
     fetch(`https://bloguefp.herokuapp.com/${postId}/${emoji}`, options)
-        .then(console.log)
-        .then(emojiCounter)
+        .then((resp) => resp.json())
+        .then((data) => emojiCounter(data, postId, emoji))
         .catch(console.warn);
 }
-// const emoji = document.querySelector(""); // to add event listener on emoji? use a tag instead of i tag to make it a link?
-// emoji.addEventListener("click", emojiReact);
 
-// function emojiReact(id, reaction) {
-//     e.preventDefault();
-
-//     const emojiData = {
-//         // need id of the post and what emoji was clicked on?
-//         id: id,
-//         emoji: emoji,
-//     };
-
-//     const options = {
-//         method: "POST",
-//         body: JSON.stringify(emojiData),
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//     };
-
-//     fetch("https://bloguefp.herokuapp.com/", options)
-//         .then((r) => r.json())
-//         .then(emojiCounter)
-//         .catch(console.warn);
-// }
-
-// function emojiCounter(data) {} // this function is not finished
+function emojiCounter(data, postId, emoji) {
+    document.getElementById(`${emoji}Counter${postId}`).textContent =
+        data.count;
+}
 
 // ******************** Add a GIF ********************
 const gifButton = document.getElementById("gif-button");
@@ -230,7 +201,7 @@ gifButton.addEventListener("click", sendApiRequest);
 function sendApiRequest(e) {
     // e.preventDefault(); Button has no default behaviour
     let apikey = "DV4iN2mItn9xsI2WSKzWWKpTaNpw9H9n";
-    let url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=3&q=`;
+    let url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=10&q=`;
     let str = document.getElementById("giphy").value.trim();
     url = url.concat(str);
     console.log(url);
@@ -238,14 +209,17 @@ function sendApiRequest(e) {
     fetch(url)
         .then((r) => r.json())
         .then((content) => {
-            let gifimg = document.getElementById("gifPreview")
-            gifimg.setAttribute('src', content.data[Math.floor(content.data.length * Math.random())].images.downsized.url); // choose a random gif, if this doesn't work use the first one e.g. content.data[0].images.downsized.url
+            let gifimg = document.getElementById("gifPreview");
+            gifimg.setAttribute(
+                "src",
+                content.data[Math.floor(content.data.length * Math.random())]
+                    .images.downsized.url
+            ); // choose a random gif out of the limit of 10
             gifimg.classList.add("imgFormat");
             //let gifContainer = document.getElementById("gifContainer");
             //gifContainer.append(gifimg);
             //gifContainer.insertAdjacentElement("afterbegin", gifimg); // gif image will show up as a preview in the make a post section
         })
-        //.then(appendEntry)
         .catch((err) => {
             console.log(err);
         });
@@ -264,7 +238,13 @@ getAllPosts();
 // ********************  Function exporting for testing ********************
 
 module.exports = {
+    countCharacters,
     submitPost,
     appendPost,
     appendPosts,
+    sendApiRequest,
+    submitComment,
+    commentsFunction,
+    emojiReact,
+    getAllPosts,
 };
