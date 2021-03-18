@@ -17,6 +17,10 @@ describe("index.html", () => {
             const head = document.querySelector("head");
             expect(head.innerHTML).toContain('link rel="stylesheet"');
         });
+        test("there is a media query stylesheet", () => {
+            const head = document.querySelector("head");
+            expect(head.innerHTML).toContain('href="assets/css/media-queries.css"');
+        });
         test("there is a favicon", () => {
             const head = document.querySelector("head");
             expect(head.innerHTML).toContain('link rel="icon"');
@@ -28,15 +32,20 @@ describe("index.html", () => {
                 expect(document.querySelector("header")).toBeTruthy();
                 expect(header.textContent).toContain("BLOGUE");
             });
+            test("it has a button for scrolling to the make a post section", () => {
+                let postButton = document.querySelector(".navigate");
+                expect(postButton).toBeTruthy();
+                expect(postButton.textContent).toContain("Make a Post");
+            });   
 
             describe("form", () => {
                 test("subject has max character length of 100", () => {
                     let form = document.querySelector("#new-post-form");
                     expect(form.innerHTML).toContain("100");
                 });
-                test("journal input has max character length of 750", () => {
+                test("journal input has max character length of 1000", () => {
                     let form = document.querySelector("#new-post-form");
-                    expect(form.innerHTML).toContain("750");
+                    expect(form.innerHTML).toContain("1000");
                 });
                 test("it has a button for submitting a post", () => {
                     let submitButton = document.querySelector(".submit");
@@ -44,10 +53,12 @@ describe("index.html", () => {
                     expect(submitButton.textContent).toContain("SUBMIT");
                 });
                 test("it has a button for adding a gif", () => {
-                    let gifButton = document.querySelector(".gif-button");
+                    let gifButton = document.querySelector("#gif-button");
                     expect(gifButton).toBeTruthy();
                     expect(gifButton.textContent).toContain("Add GIF");
                 });
+               
+    
             });
         });
     });
