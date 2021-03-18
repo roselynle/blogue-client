@@ -6,7 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script defer src="assets/js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-        <script src="https://kit.fontawesome.com/2021b518c4.js" crossorigin="anonymous"></script>
+        <script
+            src="https://kit.fontawesome.com/2021b518c4.js"
+            crossorigin="anonymous"
+        ></script>
         <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -48,8 +51,6 @@
         </div>
         <div id="post">
             <h3>WHAT'S ON YOUR MIND?</h3>
-            <!-- entries should be sent to entries.html, this can be changed later -->
-            <!-- <form action="entries.html" id="form" method="POST"> -->
             <form id="new-post-form">
                 <label for="subject"> Your Entry</label><br /><br />
                 Subject:
@@ -68,25 +69,34 @@
                     name="journalInput"
                     rows="7"
                     cols="80"
-                    maxlength="500"
+                    maxlength="1000"
                     required
                 ></textarea
                 ><br />
-                <div id="inputCount">0/500</div>
-                <label for="giphy">Gif URL</label>
-                <input id="giphy" name="giphy" type="search" />
-                <div id="gifContainer">
-                    <img id="gifPreview" src="">
+                <div id="inputCount">0/1000</div>
+                <div id="gifSection">
+                    <label for="giphy">Gif Search</label>
+                    <input
+                        id="giphy"
+                        name="giphy"
+                        type="search"
+                        placeholder="Type in a keyword and click Add GIF to preview (optional)"
+                    />
+
+                    <button onclick="sendApiRequest()" id="gif-button">
+                        <!-- check if putting a function on onclick works? -->
+                        Add GIF
+                    </button>
+                    <div id="gifContainer">
+                        <img id="gifPreview" src="">
+                    </div>
                 </div>
-                <button onclick="sendApiRequest()" id="gif-button">
-                    <!-- check if putting a function on onclick works? -->
-                    Add GIF
-                </button>
+                <br /><br />
                 <button class="submit" type="submit">SUBMIT</button>
             </form>
         </div>
         <div id="entries">
-            <h3>WHAT'S EVERYONE ELSE THINKING?</h3>
+            <h3>WHAT'S EVERYONE THINKING?</h3>
             <div id="postsContainer"></div>
         </div>
     </body>
