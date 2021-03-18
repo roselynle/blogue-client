@@ -88,12 +88,11 @@ function appendPost(data) {
 
     // div for emoji icons and assigning icons a class of emoji
     const reactionDiv = document.createElement("div");
-    // const commentIcon = `<i class="fas fa-comment fa-2x comment"></i>`;
-    const loveIcon = `<i class="fas fa-heart fa-2x emoji"><small id="loveCounter">0</small></i>`;
-    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"><small id="cryCounter">0</small></i>`;
-    const laughIcon = `<i class="fas fa-laugh-squint fa-2x emoji"><small id="laughCounter">0</small></i>`;
+    const loveIcon = `<i class="fas fa-heart fa-2x emoji"><small id="heartCounter${data.id}">${data.reactions.heart}</small></i>`;
+    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"><small id="cryCounter${data.id}">${data.reactions.cry}</small></i>`;
+    const laughIcon = `<i class="fas fa-laugh-squint fa-2x emoji"><small id="laughCounter${data.id}">${data.reactions.laugh}</small></i>`;
     reactionDiv.setAttribute("class", `${data.id}`);
-    reactionDiv.innerHTML = loveIcon + cryIcon + laughIcon; //commentIcon +
+    reactionDiv.innerHTML = loveIcon + cryIcon + laughIcon;
 
     // create form for comments
     const commentDiv = document.createElement("div");
@@ -169,9 +168,7 @@ function commentsFunction(commentData, formComment) {
 // ******************** Function to handle emoji ********************
 function emojiReact(e) {
     console.log(e);
-
     let emoji = e.path[0].classList;
-    console.log(emoji);
     if (emoji[1] === "fa-heart") {
         emoji = "heart";
     } else if (emoji[1] === "fa-sad-tear") {
@@ -179,23 +176,23 @@ function emojiReact(e) {
     } else {
         emoji = "laugh";
     }
-
     const postId = e.path[1].className;
-
     const options = {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
         },
     };
-
     fetch(`https://bloguefp.herokuapp.com/${postId}/${emoji}`, options)
-        .then(console.log)
-        .then(emojiCounter)
+        .then((resp) => resp.json())
+        .then((data) => emojiCounter(data, postId, emoji))
         .catch(console.warn);
 }
 
-// function emojiCounter() {} // this function is not finished
+function emojiCounter(data, postId, emoji) {
+    document.getElementById(`${emoji}Counter${postId}`).textContent =
+        data.count;
+}
 
 // ******************** Add a GIF ********************
 const gifButton = document.getElementById("gif-button");
