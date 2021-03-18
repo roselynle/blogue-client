@@ -1,19 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
-body {
-    background: url("../images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Satisfy&display=swap");
 @font-face {
     font-family: "vogue";
-    src: url("assets/css/vogue.ttf") format("truetype");
+    src: url("vogue.ttf") format("truetype");
+}
+
+body {
+    background: linear-gradient(
+            rgba(255, 254, 253, 0.85),
+            rgba(255, 254, 253, 0.85)
+        ),
+        url("../images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 h1 {
     font-family: "vogue";
-    font-size: 15rem;
+    font-size: 14rem;
     text-align: center;
     margin: 3rem 0rem;
     font-weight: 200;
@@ -21,59 +25,269 @@ h1 {
     color: rgb(71, 53, 53);
     opacity: 0.85;
 }
-
-h6 {
+h2 {
     font-family: "Satisfy", cursive;
     text-align: center;
     font-size: 2.5rem;
     height: 0px;
     font-weight: lighter;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
 }
-h2 {
-    font-family: "Satisfy", cursive;
+h3 {
+    font-family: "Montserrat", sans-serif;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bolder;
-    margin-top: 0%;
 }
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.navigate {
+    border: none;
+    cursor: pointer;
+    padding: 15px 28px;
+    text-align: center;
+    font-size: 28px;
+    /* font-family: "Redressed", cursive; */
+    font-family: "Montserrat", sans-serif;
+    height: 60px;
+    position: relative;
+    margin: 20px;
+    display: flex;
+    border-radius: 8px;
+    background-color: silver;
+    transition-duration: 0.4s;
+}
+
+.navigate:hover {
+    background-color: black;
+    color: white;
+}
+
 #post {
     font-family: "vogue";
     letter-spacing: 0.1em;
     text-align: center;
     color: rgb(71, 53, 53);
     font-weight: 700;
-    height: 600px;
+    height: 700px;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    padding-top: 45px;
 }
 
+form {
+    font-size: 22px;
+}
+
+#journalInput {
+    background-color: rgb(238, 213, 190);
+    box-shadow: tan;
+}
+
+#subject {
+    background-color: rgb(238, 213, 190);
+    width: 400px;
+    height: 20px;
+}
+
+.submit {
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 20px;
+    /* font-family: "Redressed", cursive; */
+    font-family: "Montserrat", sans-serif;
+    height: 50px;
+    position: relative;
+    margin-bottom: 30%;
+    background-color: silver;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+.submit:hover {
+    background-color: black;
+    color: white;
+}
+
+.gif-button {
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 20px;
+    /* font-family: "Redressed", cursive; */
+    font-family: "Montserrat", sans-serif;
+    height: 50px;
+    position: relative;
+    margin-bottom: 30%;
+    background-color: silver;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+.gif:hover {
+    background-color: black;
+    color: white;
+}
 #entries {
     font-family: "vogue";
     letter-spacing: 0.1em;
     text-align: center;
     color: rgb(71, 53, 53);
     font-weight: 700;
+    height: 800px;
+    padding-top: 30px;
+}
+
+#subjectCount {
+    font-size: 1rem;
+}
+
+#inputCount {
+    padding-bottom: 30px;
+    font-size: 1rem;
+}
+
+#gifContainer {
+    height: 30px;
+    display: inline-block;
+}
+
+#postsContainer {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 0 auto;
+    width: 850px;
     height: 600px;
+    overflow-y: auto;
 }
 
-.button {
-    border: none;
-    cursor: pointer;
-    padding: 15px 28px;
-    text-align: center;
-    font-size: 28px;
-    font-family: 'Redressed', cursive;
-    height: 60px;
-    position: relative;
-    margin-bottom: 30%;
+#giphy {
+    width: 400px;
+    height: 27px;
+    margin: 0 auto;
+    background-color: rgb(238, 213, 190);
 }
 
-.submit{
-    border: none;
-    cursor: pointer;
-    padding: 15px 28px;
-    text-align: center;
-    font-size: 28px;
-    font-family: 'Redressed', cursive;
-    height: 60px;
-    position: relative;
-    margin-bottom: 30%;
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 10rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    form {
+        font-size: 15px;
+    }
+    .navigate {
+        height: 50px;
+        font-size: 20px;
+    }
+    #postsContainer {
+        width: 550px;
+    }
+}
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 6rem;
+        padding-top: 10rem;
+    }
+    h2 {
+        font-size: 1.25rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    form {
+        font-size: 12px;
+    }
+    .navigate {
+        height: 40px;
+        font-size: 15px;
+    }
+    #subject {
+        width: 200px;
+        height: 12px;
+    }
+    #journalInput {
+        width: calc(100vw - 50px);
+        resize: none;
+    }
+    #giphy {
+        width: 200px;
+    }
+    #postsContainer {
+        width: 425px;
+    }
+}
+
+@media (max-width: 414px) {
+    h1 {
+        font-size: 4.5rem;
+        padding-top: 10rem;
+    }
+    h2 {
+        font-size: 1rem;
+    }
+    h3 {
+        font-size: 0.75rem;
+    }
+    form {
+        font-size: 7px;
+    }
+    .navigate {
+        height: 25px;
+        font-size: 10px;
+    }
+    #subject {
+        width: 150px;
+        height: 12px;
+    }
+    #journalInput {
+        width: calc(100vw - 70px);
+        resize: none;
+    }
+    #giphy {
+        width: 150px;
+    }
+    #postsContainer {
+        width: 275px;
+    }
+}
+
+#commentHeading {
+    font-size: 30px;
+    margin-top: 40px;
+}
+#commentContents,
+.newCommentMessage {
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    padding-bottom: 30px;
+}
+
+.formCommentInput {
+    background-color: rgb(238, 213, 190);
+    width: 300px;
+    margin: 20px 10px 20px 0px;
+    height: 20px;
+}
+
+.emoji,
+.comment {
+    padding: 15px 12px;
+}
+
+.imgFormat {
+    max-block-size: 10rem;
+    margin: 12px auto;
 }
