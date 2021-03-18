@@ -1,0 +1,617 @@
+/* Galaxy Fold */
+@media screen and (min-width:279px) and (max-width: 281px){
+    h1 {
+        font-size: 4.5rem;
+        padding-top: 8rem;
+        text-align: center;
+    }
+    h2 {
+        font-size: 2.6rem;
+        padding-bottom: 7.5rem;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+    .button{
+        padding-bottom: 20%;
+    }
+    .navigate {
+        height: 5.7rem;
+        font-size: 1.3rem;
+        padding-bottom: 9%;
+        padding-top:2%;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .submit {
+        width: 7rem;
+        height: 3rem;
+        font-size: 1rem;
+        font-weight: bolder;
+    }
+    #gifSection {
+        font-size: 1.4rem;
+    }
+    #giphy {
+        width: 14rem;
+        font-size: 0.8rem;
+        height: 1.3rem;
+        background-color: rgb(238, 213, 190);
+    }
+    #gif-button {
+        font-size: 1rem;
+        width: 6rem;
+        height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    #new-post-form {
+        font-size: 1.3rem;
+        font-weight: bolder;
+    }
+    #subjectCount {
+        font-size: 1rem;
+    }
+    #inputCount {
+        font-size: 1rem;
+    }
+    #journalInput {
+        width: 15rem;
+        height: 8rem;
+        font-size: 1rem;
+    }
+    #subject {
+        width: 10rem;
+        height: 1rem;
+        font-size: 1rem;
+    }
+    
+    #post {
+        padding-bottom: 27rem;
+    }
+    #postsContainer {
+        height: 75rem;
+        width: 100%;
+    } 
+} 
+
+/* Galaxy S5 */
+@media screen and (min-width:359px) and (max-width: 361px) {
+    h1 {
+        font-size: 6rem;
+        padding-top: 6rem;
+    }
+    h2 {
+        font-size: 2rem;
+        padding-bottom: 4.5rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    .button{
+        padding-bottom: 20%;
+    }
+    .navigate {
+        height: 3.5rem;
+        font-size: 1rem;
+        padding-bottom: 9%;
+        padding-top:3%;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .submit {
+        width: 10rem;
+        height: 3.5rem;
+        font-size: 1rem;
+        font-weight: bolder;
+    }
+    #gifSection {
+        font-size: 1rem;
+    }
+    #giphy {
+        width: 18rem;
+        font-size: 0.9rem;
+        height: 35px;
+        margin: 0 auto;
+        background-color: rgb(238, 213, 190);
+    }
+    #gif-button {
+        font-size: 1rem;
+        width: 6rem;
+        height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    #new-post-form {
+        font-size: 1rem;
+        font-weight: bolder;
+    }
+    #subjectCount {
+        font-size: 1rem;
+    }
+    #inputCount {
+        font-size: 1rem;
+    }
+    #journalInput {
+        width: 20rem;
+        height: 10rem;
+        font-size: 1.2rem;
+    }
+    #subject {
+        width: 12rem;
+        height: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    #post {
+        padding-bottom: 27rem;
+    }
+    #postsContainer {
+        height: 75rem;
+        width: 100%;
+    }  
+}  
+/* Iphone 6 */
+ /* @media screen and (min-width:374px) and(max-width: 376px) and (min-height: 665px) and (max-height: 668px){
+    h1 {
+        font-size: 6rem;
+        padding-top: 4rem;
+    }
+    h2 {
+        font-size: 2rem;
+        padding-bottom: 4.5rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    .button{
+        padding-bottom: 20%;
+    }
+    .navigate {
+        height: 3.5rem;
+        font-size: 1rem;
+        padding-bottom: 9%;
+        padding-top:3%;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .submit {
+        width: 10rem;
+        height: 3.5rem;
+        font-size: 1rem;
+        font-weight: bolder;
+    }
+    #gifSection {
+        font-size: 1rem;
+    }
+    #giphy {
+        width: 18rem;
+        font-size: 0.9rem;
+        height: 35px;
+        margin: 0 auto;
+        background-color: rgb(238, 213, 190);
+    }
+    #gif-button {
+        font-size: 1rem;
+        width: 6rem;
+        height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    #new-post-form {
+        font-size: 1rem;
+        font-weight: bolder;
+    }
+    #subjectCount {
+        font-size: 1rem;
+    }
+    #inputCount {
+        font-size: 1rem;
+    }
+    #journalInput {
+        width: 20rem;
+        height: 10rem;
+        font-size: 1.2rem;
+    }
+    #subject {
+        width: 12rem;
+        height: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    #post {
+        padding-bottom: 27rem;
+    }
+    #postsContainer {
+        height: 75rem;
+        width: 100%;
+    } 
+}     */
+
+/* Iphone X */
+  @media screen and (min-width:374px) and (max-width: 376px) and (min-height: 811px) {
+    h1 {
+        font-size: 5.5rem;
+        padding-top: 10rem;
+        text-align: center;
+    }
+    h2 {
+        font-size: 2.6rem;
+        padding-bottom: 9.5rem;
+    }
+    h3 {
+        font-size: 1.7rem;
+    }
+    .button{
+        padding-bottom: 20%;
+    }
+    .navigate {
+        height: 7.7rem;
+        font-size: 1.7rem;
+        padding-bottom: 9%;
+        padding-top:2%;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .submit {
+        width: 10rem;
+        height: 3.5rem;
+        font-size: 1rem;
+        font-weight: bolder;
+    }
+    #gifSection {
+        font-size: 1rem;
+    }
+    #giphy {
+        width: 17rem;
+        font-size: 0.9rem;
+        height: 35px;
+        background-color: rgb(238, 213, 190);
+    }
+    #gif-button {
+        font-size: 1rem;
+        width: 6rem;
+        height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    #new-post-form {
+        font-size: 1.5rem;
+        font-weight: bolder;
+    }
+    #subjectCount {
+        font-size: 1rem;
+    }
+    #inputCount {
+        font-size: 1rem;
+    }
+    #journalInput {
+        width: 17rem;
+        height: 8rem;
+        font-size: 1.2rem;
+    }
+    #subject {
+        width: 10rem;
+        height: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    #post {
+        padding-bottom: 27rem;
+    }
+    #postsContainer {
+        height: 75rem;
+        width: 100%;
+    } 
+}  
+
+/* Iphone 6 plus */
+@media screen and (min-width:413px) and (max-width: 415px) {
+    h1 {
+        font-size: 6rem;
+        padding-top: 8rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    .button{
+        padding-bottom: 10%;
+    }
+    .navigate {
+        height: 5.5rem;
+        font-size: 1.5rem;
+        padding-bottom: 9%;
+        padding-top:3%;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .submit {
+        width: 10rem;
+        height: 4.5rem;
+        font-size: 1.5rem;
+        font-weight: bolder;
+    }
+    #gifSection {
+        font-size: 1.5rem;
+    }
+    #giphy {
+        width: 15rem;
+        font-size: 0.9rem;
+        height: 35px;
+        margin: 0 auto;
+        background-color: rgb(238, 213, 190);
+    }
+    #gif-button {
+        font-size: 1rem;
+        width: 6rem;
+        height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    #new-post-form {
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    #subjectCount {
+        font-size: 1.5rem;
+    }
+    #inputCount {
+        font-size: 1.5rem;
+    }
+    #journalInput {
+        width: 20rem;
+        height: 12rem;
+        font-size: 1.3rem;
+    }
+    #subject {
+        width: 12rem;
+        height: 2rem;
+        font-size: 1.2rem;
+    }
+   
+    #post {
+        padding-bottom: 27rem;
+    }
+    #postsContainer {
+        height: 75rem;
+        width: 100%;
+    } 
+}
+/* surface duo  */
+@media screen and (min-width:539px) and (max-width: 541px) {
+    h1 {
+        font-size: 4.5rem;
+        padding-top: 9rem;
+        text-align: center;
+    }
+    h2 {
+        font-size: 2.6rem;
+        padding-bottom: 7.5rem;
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    .button{
+        padding-bottom: 20%;
+    }
+    .navigate {
+        height: 5.7rem;
+        font-size: 1.7rem;
+        padding-bottom: 9%;
+        padding-top:2%;
+        text-align: center;
+        font-weight: bolder;
+        width: 10rem;
+    }
+    .submit {
+        width: 10rem;
+        height: 3.5rem;
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    #gifSection {
+        font-size: 2rem;
+    }
+    #giphy {
+        width: 17rem;
+        font-size: 0.9rem;
+        height: 35px;
+        background-color: rgb(238, 213, 190);
+    }
+    #gif-button {
+        font-size: 1rem;
+        width: 6rem;
+        height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    #new-post-form {
+        font-size: 1.5rem;
+        font-weight: bolder;
+    }
+    #subjectCount {
+        font-size: 1.5rem;
+    }
+    #inputCount {
+        font-size: 1.5rem;
+    }
+    #journalInput {
+        width: 23rem;
+        height: 10rem;
+        font-size: 1.2rem;
+    }
+    #subject {
+        width: 15rem;
+        height: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    #post {
+        padding-bottom: 27rem;
+    }
+    #postsContainer {
+        height: 75rem;
+        width: 100%;
+    } 
+}  
+
+/* Ipad */
+  @media screen and (min-width:767px) and (max-width: 769px) {
+    h1 {
+        font-size: 8rem;
+        padding-top: 9rem;
+        padding-bottom: 3rem;
+    }
+    h2 {
+        font-size: 4rem;
+        padding-bottom: 10.5rem;
+    }
+    h3 {
+        font-size: 3rem;
+    }
+    .button{
+        padding-bottom: 15%;
+    }
+    .navigate {
+        height: 12.5rem;
+        font-size: 4rem;
+        padding-bottom: 9%;
+        padding-top:3%;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .submit {
+        width: 15rem;
+        height: 6.5rem;
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    #gifSection {
+        font-size: 3rem;
+    }
+    #giphy {
+        width: 30rem;
+        font-size: 1.5rem;
+        height: 2.5rem;
+        background-color: rgb(238, 213, 190);
+    }
+    #gif-button {
+        font-size: 1.6rem;
+        width: 7rem;
+        height: 4rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    #new-post-form {
+        font-size: 2.5rem;
+        font-weight: bolder;
+    }
+    #subjectCount {
+        font-size: 2.5rem;
+    }
+    #inputCount {
+        font-size: 2.5rem;
+    }
+    #journalInput {
+        width: 40rem;
+        height: 14rem;
+        font-size: 2rem;
+    }
+    #subject {
+        width: 22rem;
+        height: 2.5rem;
+        font-size: 2rem;
+    }
+    
+    #post {
+        padding-bottom: 27rem;
+    }
+    #postsContainer {
+        height: 75rem;
+        width: 100%;
+    } 
+}    
+
+/* Ipad Pro */
+ @media screen and (min-width:1023px) and (max-width: 1025px) {
+    h1 {
+        font-size: 16rem;
+        padding-top: 14rem;
+    }
+    h2 {
+        font-size: 7rem;
+        padding-bottom: 18.5rem;
+    }
+    h3 {
+        font-size: 4.5rem;
+    }
+    .button{
+        padding-bottom: 20%;
+    }
+    .navigate {
+        height: 14.5rem;
+        font-size: 4.5rem;
+        padding-bottom: 9%;
+        padding-top:3%;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .submit {
+        width: 25rem;
+        height: 10.5rem;
+        font-size: 5rem;
+        font-weight: bolder;
+        align-items: center;
+    }
+    #gifSection {
+        font-size: 3rem;
+        text-align: left;
+    }
+    #giphy {
+        width: 35rem;
+        font-size: 1.5rem;
+        height: 3rem;
+        margin: 0 auto;
+        background-color: rgb(238, 213, 190);
+    }
+    #gif-button {
+        font-size: 1.5rem;
+        width: 8rem;
+        height: 2.5rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    #new-post-form {
+        font-size: 3rem;
+        font-weight: bolder;
+    }
+    #subjectCount {
+        font-size: 2.5rem;
+    }
+    #inputCount {
+        font-size: 2.5rem;
+    }
+    #journalInput {
+        width: 50rem;
+        height: 25rem;
+        font-size: 2.2rem;
+    }
+    #subject {
+        width: 32rem;
+        height: 2.5rem;
+        font-size: 2rem;
+    }
+    
+    #post {
+        padding-bottom: 37rem;
+    }
+    #postsContainer {
+        height: 75rem;
+        width: 100%;
+    } 
+}  
+
+
