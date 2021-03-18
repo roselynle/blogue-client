@@ -32,10 +32,11 @@ function submitPost(e) {
         currentDate.getMonth() + 1 // because january starts at 0
     }/${currentDate.getFullYear()}, ${currentDate.getHours()}:${currentDate.getMinutes()}`;
 
+    console.log(document.getElementById("gifPreview").getAttribute('src'))
     const postData = {
         subject: e.target.subject.value,
         journalInput: e.target.journalInput.value,
-        gif: e.target.giphy.value,
+        gif: document.getElementById("gifPreview").getAttribute('src'),
         date: dateTimeStamp,
     };
 
@@ -75,24 +76,25 @@ function appendPost(data) {
     contents.textContent = data.journalInput;
 
     // small text for the date
-    const date = document.createElement("small");
+    const date = document.createElement("p");
     date.textContent = data.date;
 
     // // imgs for the gif
-    // const newImg = document.createElement("img");
-    // newImg.src = data.gif;
-    // newImg.style.display = "block";
-    // newImg.style.margin = "0 auto";
+    console.log(data.gif)
+    const newImg = document.createElement("img");
+    newImg.src = data.gif;
+    newImg.style.display = "block";
+    newImg.style.margin = "0 auto";
 
     // div for emoji icons and assigning icons a class of emoji
     const reactionDiv = document.createElement("div");
-    const commentIcon = `<i class="fas fa-comment fa-2x comment"></i>`;
-    const loveIcon = `<i class="fas fa-heart fa-2x emoji"></i>`;
-    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"></i>`;
-    const laughIcon = `<i class="far fa-laugh-squint fa-2x emoji"></i>`;
+    // const commentIcon = `<i class="fas fa-comment fa-2x comment"></i>`;
+    const loveIcon = `<i class="fas fa-heart fa-2x emoji"><small id="loveCounter">0</small></i>`;
+    const cryIcon = `<i class="fas fa-sad-tear fa-2x emoji"><small id="cryCounter">0</small></i>`;
+    const laughIcon = `<i class="fas fa-laugh-squint fa-2x emoji"><small id="laughCounter">0</small></i>`;
     reactionDiv.setAttribute("class", `${data.id}`);
 
-    reactionDiv.innerHTML = commentIcon + loveIcon + cryIcon + laughIcon;
+    reactionDiv.innerHTML = loveIcon + cryIcon + laughIcon; //commentIcon +
 
     // create form for comments
     const commentDiv = document.createElement("div");
@@ -119,7 +121,8 @@ function appendPost(data) {
     // appending each element to the new postsDiv, and then append this new div to existing postsContainer
     postsDiv.appendChild(header);
     postsDiv.appendChild(contents);
-    //postsDiv.appendChild(newImg);
+    postsDiv.appendChild(newImg);
+    postsDiv.appendChild(date);
     postsDiv.appendChild(reactionDiv);
     postsDiv.appendChild(commentDiv);
     parent.append(postsDiv);
@@ -147,7 +150,6 @@ function submitComment(e) {
 
     fetch(`https://bloguefp.herokuapp.com/${postId}`, options)
         .then((r) => r.json())
-        .then(console.log)
         .catch(console.warn);
 
     commentsFunction(commentData, e.target);
@@ -226,7 +228,7 @@ const gifButton = document.getElementById("gif-button");
 gifButton.addEventListener("click", sendApiRequest);
 
 function sendApiRequest(e) {
-    e.preventDefault();
+    // e.preventDefault(); Button has no default behaviour
     let apikey = "DV4iN2mItn9xsI2WSKzWWKpTaNpw9H9n";
     let url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=3&q=`;
     let str = document.getElementById("giphy").value.trim();
@@ -236,17 +238,14 @@ function sendApiRequest(e) {
     fetch(url)
         .then((r) => r.json())
         .then((content) => {
-            let gifimg = document.createElement("img");
-            gifimg.src =
-                content.data[
-                    Math.floor(content.data.length * Math.random())
-                ].images.downsized.url; // choose a random gif, if this doesn't work use the first one e.g. content.data[0].images.downsized.url
+            let gifimg = document.getElementById("gifPreview")
+            gifimg.setAttribute('src', content.data[Math.floor(content.data.length * Math.random())].images.downsized.url); // choose a random gif, if this doesn't work use the first one e.g. content.data[0].images.downsized.url
             gifimg.classList.add("imgFormat");
-            let gifContainer = document.getElementById("gifContainer");
-            gifContainer.append(gifimg);
-            gifContainer.insertAdjacentElement("afterbegin", gifimg); // gif image will show up as a preview in the make a post section
+            //let gifContainer = document.getElementById("gifContainer");
+            //gifContainer.append(gifimg);
+            //gifContainer.insertAdjacentElement("afterbegin", gifimg); // gif image will show up as a preview in the make a post section
         })
-        .then(appendEntry)
+        //.then(appendEntry)
         .catch((err) => {
             console.log(err);
         });
