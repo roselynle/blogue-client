@@ -1,6 +1,6 @@
 // ******************** Submitting a new form ********************
-const form = document.querySelector("#new-post-form");
-form.addEventListener("submit", submitPost);
+// const form = document.querySelector("#new-post-form");
+// form.addEventListener("submit", submitPost);
 
 function submitPost(e) {
     e.preventDefault();
@@ -172,8 +172,8 @@ function emojiCounter(data, postId, emoji) {
 }
 
 // ******************** Add a GIF ********************
-const gifButton = document.getElementById("gif-button");
-gifButton.addEventListener("click", sendApiRequest);
+// const gifButton = document.getElementById("gif-button");
+// gifButton.addEventListener("click", sendApiRequest);
 
 function sendApiRequest(e) {
     // e.preventDefault(); Button has no default behaviour
@@ -215,7 +215,6 @@ getAllPosts();
 // ********************  Function exporting for testing ********************
 
 module.exports = {
-    countCharacters,
     submitPost,
     appendPost,
     appendPosts,
