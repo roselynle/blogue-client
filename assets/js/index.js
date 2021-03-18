@@ -59,6 +59,7 @@ function appendPost(data) {
     // imgs for the gif
     console.log(data.gif);
     const newImg = document.createElement("img");
+    newImg.setAttribute("id", "gifOnPost");
     newImg.src = data.gif;
     newImg.style.display = "block";
     newImg.style.margin = "0 auto";
