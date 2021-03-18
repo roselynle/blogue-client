@@ -16,6 +16,7 @@ function submitPost(e) {
         gif: document.getElementById("gifPreview").getAttribute("src"),
         date: dateTimeStamp,
     };
+    document.getElementById('new-post-form').reset();
 
     const options = {
         method: "POST",
@@ -93,6 +94,13 @@ function appendPost(data) {
     // add event listener to comment submit button
     formComment.addEventListener("submit", submitComment); // function below
     commentDiv.appendChild(formComment);
+    // add existing comments to the post
+    for (let comment of data.comments) {
+        let commentP = document.createElement('p');
+        commentP.setAttribute('class', 'newCommentMessage');
+        commentP.textContent = comment;
+        commentDiv.appendChild(commentP);
+    }
 
     // appending each element to the new postsDiv, and then append this new div to existing postsContainer
     postsDiv.appendChild(header);
