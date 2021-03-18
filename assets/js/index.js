@@ -1,29 +1,6 @@
-// ******************** Function for tracking the character count ********************
-const subjectCount = document.querySelector("#subjectCount");
-const inputCount = document.querySelector("#inputCount");
-let postSubject = document.getElementById("subject");
-let postInput = document.getElementById("journalInput");
-
-function countCharacters() {
-    let subjectMaxLength = 100;
-    let inputMaxLength = 1000;
-    let subjectLength = postSubject.value.length;
-    let inputLength = postInput.value.length;
-
-    if (subjectLength <= subjectMaxLength) {
-        subjectCount.textContent = `${subjectLength}/ ${subjectMaxLength}`;
-    }
-
-    if (inputLength <= inputMaxLength) {
-        inputCount.textContent = `${inputLength}/ ${inputMaxLength}`;
-    }
-}
-postSubject.addEventListener("keyup", countCharacters);
-postInput.addEventListener("keyup", countCharacters);
-
 // ******************** Submitting a new form ********************
-const form = document.querySelector("#new-post-form");
-form.addEventListener("submit", submitPost);
+// const form = document.querySelector("#new-post-form");
+// form.addEventListener("submit", submitPost);
 
 function submitPost(e) {
     e.preventDefault();
@@ -195,8 +172,8 @@ function emojiCounter(data, postId, emoji) {
 }
 
 // ******************** Add a GIF ********************
-const gifButton = document.getElementById("gif-button");
-gifButton.addEventListener("click", sendApiRequest);
+// const gifButton = document.getElementById("gif-button");
+// gifButton.addEventListener("click", sendApiRequest);
 
 function sendApiRequest(e) {
     // e.preventDefault(); Button has no default behaviour
@@ -238,7 +215,6 @@ getAllPosts();
 // ********************  Function exporting for testing ********************
 
 module.exports = {
-    countCharacters,
     submitPost,
     appendPost,
     appendPosts,
