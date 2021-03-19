@@ -149,8 +149,12 @@
         padding-bottom: 37rem;
     }
     #postsContainer {
-        height: 75rem;
+        height: 38rem;
         width: 100%;
+    }
+    .backToTop {
+        font-size: 2rem;
+        height: 3.8rem;
     }
 }
 
@@ -225,8 +229,12 @@
         padding-bottom: 27rem;
     }
     #postsContainer {
-        height: 75rem;
+        height: 40rem;
         width: 100%;
+    }
+    .backToTop {
+        font-size: 1.5rem;
+        height: 3rem;
     }
 }
 
@@ -304,7 +312,7 @@
         padding-top: 5rem;
     }
     #postsContainer {
-        height: 75rem;
+        height: 43em;
         width: 100%;
     }
 }
@@ -381,7 +389,7 @@
         padding-top: 4rem;
     }
     #postsContainer {
-        height: 75rem;
+        height: 43rem;
         width: 100%;
     }
     #commentHeading {
@@ -390,6 +398,10 @@
     }
     .emoji {
         font-size: 1.2rem;
+    }
+    .backToTop {
+        font-size: 1rem;
+        height: 2.5rem;
     }
 }
 
@@ -466,7 +478,7 @@
         padding-bottom: 27rem;
     }
     #postsContainer {
-        height: 75rem;
+        height: 42rem;
         width: 100%;
     }
     #commentHeading {
@@ -475,6 +487,10 @@
     }
     .emoji {
         font-size: 1.2rem;
+    }
+    .backToTop {
+        font-size: 1rem;
+        height: 2.5rem;
     }
 }
 
@@ -520,9 +536,9 @@
         margin: 10px;
     }
     #gif-button {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         width: 4.5rem;
-        height: 1.5rem;
+        height: 2.5rem;
         text-align: center;
         margin-top: 1rem;
     }
@@ -551,8 +567,12 @@
         padding-top: 3rem;
     }
     #postsContainer {
-        height: 75rem;
+        height: 43rem;
         width: 100%;
+    }
+    .backToTop {
+        font-size: 1rem;
+        height: 2.5rem;
     }
 }
 
@@ -600,7 +620,7 @@
     #gif-button {
         font-size: 0.7rem;
         width: 4rem;
-        height: 1.2rem;
+        height: 2.2rem;
         text-align: center;
         margin-top: 1rem;
     }
@@ -629,7 +649,7 @@
         padding-top: 4.7rem;
     }
     #postsContainer {
-        height: 75rem;
+        height: 43rem;
         width: 100%;
     }
     #commentHeading {
@@ -641,5 +661,9 @@
     }
     .formCommentInput {
         width: 9rem;
+    }
+    .backToTop {
+        font-size: 0.9rem;
+        height: 2.3rem;
     }
 }
