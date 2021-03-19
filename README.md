@@ -5,7 +5,7 @@
 
 ![](assets/images/demo.gif)
 
-An anonymous community journalling site built using JavaScript, HTML, and CSS.
+A anonymous community journalling site built using JavaScript, HTML, and CSS, inspired by the aesthetics of Vogue magazine.
 Users can make posts anonymously, with an optional feature to add a GIF.
 Other users can comment and react on the submitted posts.
 
