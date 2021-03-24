@@ -1,7 +1,7 @@
 # Blogue - client
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/226f0fc3-cf20-46f0-a3a6-9405d6a47167/deploy-status)](https://app.netlify.com/sites/blogue/deploys)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ![](assets/images/demo.gif)
 
@@ -69,4 +69,4 @@ Other users can comment and react on the submitted posts.
 
 ## Licence
 
--   ISC
+-   MIT
