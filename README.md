@@ -58,7 +58,8 @@ Other users can comment and react on the submitted posts.
 
 ## Bugs
 
--   No known bugs. The following bugs were encountered during the process and fixed: communication issues between client and server side, posts not appending to page upon clicking submit, form not clearing once post has been submitted, multiple GIFs being generated upon clicking 'add gif' button, emoji reaction count not incrementing
+-   Preview of GIF image does not disappear when post is submitted, it will only disappear when the page is refreshed.
+-   The following bugs were encountered during the process and fixed: communication issues between client and server side, posts not appending to page upon clicking submit, form not clearing once post has been submitted, multiple GIFs being generated upon clicking 'add gif' button, emoji reaction count not incrementing
 
 ## Future Features
 
